@@ -96,12 +96,3 @@ pytest -q
 ### Output & Formats
 
 This project doesn't currently define a CLI with multiple output formats, but `main.py` prints or logs results; you can adapt nodes to return structured JSON or other formats for machine consumption.
-
-### Documentation & Next Steps
-
-- `graph/` contains the primary implementation: `graph.py`, `state.py`, `chains/`, and `nodes/`.
-- I can add a dedicated `docs/agentic-rag.md` modeled after the MCP Scanner README with more examples, or add a lightweight CLI wrapper that supports multiple output formats similar to MCP Scanner.
-
-### License
-
-If you want this project published with a permissive license, I can add an `LICENSE` file (e.g., MIT) and push it.
