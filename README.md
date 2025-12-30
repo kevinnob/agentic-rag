@@ -1,28 +1,24 @@
-# agentic-rag
+## Agentic RAG System
 
-Local repo for `agentic-rag` — an agentic retrieval-augmented generation project.
+This project implements an **agentic Retrieval-Augmented Generation (RAG)** pipeline designed to produce **grounded, self-evaluated answers** rather than free-form LLM responses.
 
-Quick start
+Instead of answering questions in a single pass, the system treats question answering as a **multi-step reasoning process**:
+1. Retrieve relevant documents from a vector database
+2. Grade the retrieved evidence for relevance and sufficiency
+3. Escalate to web search when local knowledge is insufficient
+4. Generate an answer constrained by supporting evidence
+5. Evaluate the final answer for usefulness and factual support before returning it
 
-1. Create a virtual environment: `python -m venv .venv`
-2. Activate it: `source .venv/bin/activate`
-3. Install dependencies: `pip install -r requirements.txt` (if provided)
-4. Run scripts: `python main.py`
+The workflow is orchestrated as a **graph of modular reasoning nodes**, allowing the system to dynamically route, retry, or halt based on quality checks. This design reduces hallucinations, improves factual grounding, and mirrors how a human researcher searches, evaluates, and synthesizes information.
 
-To push this repo to GitHub:
+### Key Features
+- **Vector-based retrieval** using embeddings and a persistent Chroma database
+- **Agentic control flow** with conditional routing and feedback loops
+- **Document and answer grading** to detect low-quality or unsupported responses
+- **Evidence-constrained generation** to reduce hallucination risk
+- **Modular, extensible architecture** built with LangChain
 
-1. Create a new repository on GitHub named `agentic-rag`.
-2. Add remote and push:
-   ```bash
-   git remote add origin https://github.com/<your-username>/agentic-rag.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-If you prefer SSH:
-
-```bash
-git remote add origin git@github.com:<your-username>/agentic-rag.git
-git branch -M main
-git push -u origin main
-```
+### Use Cases
+- Knowledge-grounded chatbots and assistants
+- Research and documentation Q&A systems
+- Safer, more reliable LLM applications that require evidence awareness
